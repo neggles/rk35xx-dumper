@@ -164,6 +164,11 @@ _deps
 
 ### End of template ###
 
+# cmake build dir names
+/build/
+/export/
+/output/
+
 # local misc and temp
 /misc/
 /temp/

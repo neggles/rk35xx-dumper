@@ -1,8 +1,25 @@
 {
     "files.associations": {
+        ".clang-format": "yaml",
+        ".config": "shellscript",
+        ".gitignore": "ignore",
+        "*.config": "makefile",
+        "*.cwaps1": "powershell",
+        "*.dts": "dts",
+        "*.dtsi": "dts",
+        "*.html": "html",
+        "*.scc": "makefile",
+        "*.txt": "plaintext",
+        "ssh_config": "ssh_config",
+        "*.log": "log",
         "cross_*": "ini",
-        "*.build": "meson"
+        "*.build": "meson",
+        "CMakeLists.txt": "cmake",
+        "stdint.h": "c"
     },
     "editor.tabSize": 4,
-    "bashIde.shellcheckArguments": "--disable=SC2034"
+    "bashIde.shellcheckArguments": "--disable=SC2034",
+    "[c]": {
+        "editor.formatOnSave": true
+    }
 }
