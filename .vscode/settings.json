@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "cross_*": "ini",
+        "*.build": "meson"
+    },
+    "editor.tabSize": 4,
+    "bashIde.shellcheckArguments": "--disable=SC2034"
+}
