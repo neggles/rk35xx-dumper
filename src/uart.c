@@ -1,12 +1,7 @@
-#include <stdint.h>
-
+#include "types.h"
 #include "uart.h"
 
-#define DEFINE_PORT(name, address) volatile uint32_t *name = (volatile uint32_t *)address
-
-DEFINE_PORT(uart_thr, UART_BASE);
-DEFINE_PORT(uart_fcr, UART_BASE + 0x08);
-DEFINE_PORT(uart_lsr, UART_BASE + 0x14);
+rk_uart_t *uart2 = (rk_uart_t *)UART_BASE;
 
 /*
  * This is completely unnecessary. The FIFO sets the same status bit when empty
@@ -16,14 +11,20 @@ DEFINE_PORT(uart_lsr, UART_BASE + 0x14);
 void setupUart(void) {
     // If the TX FIFO is enabled, reset and disable it.
     // if ((*uart_fcr & UART_FCR_FIFO_EN) == 1) { *uart_fcr ^= UART_FCR_FIFO_EN; }
+    return;
 }
 
 // Put a character in the UART TX register
 void uartPutc(char c) {
     // Wait for the TX register to be empty
-    while (!(*uart_lsr & UART_LSR_TX_REG_EMPTY)) {}
+    while (!(uart2->lsr & UART_LSR_TX_HOLD_REG_EMPTY)) {}
     // Write the character to the TX FIFO
-    *uart_thr = c;
+    uart2->buf = c;
+}
+
+void putchar(char c) {
+    if (c == '\n') uartPutc('\r');
+    uartPutc(c);
 }
 
 // picolibc's printf() calls puts() to print a string, so we need to implement it.

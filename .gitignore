@@ -173,5 +173,5 @@ _deps
 /misc/
 /temp/
 
-# toolchain
+# toolchain and rkbin
 /toolchain/

@@ -23,15 +23,26 @@ endif()
 set(LLVM_LD_SCRIPT "aarch64.ld")
 
 # assemble flags for clang
-list(APPEND LLVM_CLANG_FLAGS "--config aarch64.cfg")
+list(APPEND LLVM_CLANG_FLAGS "--config aarch64_bare.cfg")
+list(APPEND LLVM_CLANG_FLAGS "-march=armv8-a")
 list(APPEND LLVM_CLANG_FLAGS "-std=gnu99")
+
+list(APPEND LLVM_CLANG_FLAGS "-funsigned-char")
+list(APPEND LLVM_CLANG_FLAGS "-ffreestanding")
+list(APPEND LLVM_CLANG_FLAGS "-mgeneral-regs-only")
+list(APPEND LLVM_CLANG_FLAGS "-mstrict-align")
+
+list(APPEND LLVM_CLANG_FLAGS "-fno-stack-protector")
+list(APPEND LLVM_CLANG_FLAGS "-fno-exceptions")
+list(APPEND LLVM_CLANG_FLAGS "-fno-rtti")
+
 list(JOIN LLVM_CLANG_FLAGS " " LLVM_CLANG_FLAGS)
 
 
 # Shun all C before C99
 set(CMAKE_ASM_FLAGS "${LLVM_CLANG_FLAGS}" CACHE INTERNAL "ASM Compiler options")
 set(CMAKE_C_FLAGS "${LLVM_CLANG_FLAGS}" CACHE INTERNAL "C Compiler options")
-set(CMAKE_EXE_LINKER_FLAGS "-Wl,-T${CMAKE_CURRENT_SOURCE_DIR}/src/${LLVM_LD_SCRIPT}" CACHE INTERNAL "Linker options")
+set(CMAKE_EXE_LINKER_FLAGS "-T${CMAKE_CURRENT_SOURCE_DIR}/src/${LLVM_LD_SCRIPT}" CACHE INTERNAL "Linker options")
 
 # Debug flags
 set(CMAKE_ASM_FLAGS_DEBUG "" CACHE INTERNAL "ASM Compiler options for debug build type")
@@ -40,7 +51,7 @@ set(CMAKE_EXE_LINKER_FLAGS_DEBUG "" CACHE INTERNAL "Linker options for debug bui
 
 # Release flags
 set(CMAKE_ASM_FLAGS_RELEASE "" CACHE INTERNAL "ASM Compiler options for release build type")
-set(CMAKE_C_FLAGS_RELEASE "-Os -flto" CACHE INTERNAL "C Compiler options for release build type")
+set(CMAKE_C_FLAGS_RELEASE "-Os" CACHE INTERNAL "C Compiler options for release build type")
 set(CMAKE_EXE_LINKER_FLAGS_RELEASE "" CACHE INTERNAL "Linker options for release build type")
 
 # Binaries
