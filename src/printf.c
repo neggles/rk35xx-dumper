@@ -19,11 +19,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 void putchar(char c);
 
-static char *bf;
-static char buf[12];
+static char *       bf;
+static char         buf[12];
 static unsigned int num;
-static char uc;
-static char zs;
+static char         uc;
+static char         zs;
 
 static void out(char c) {
     *bf++ = c;
@@ -46,8 +46,8 @@ static void divOut(unsigned int div) {
 
 void tfp_printf(char *fmt, ...) {
     va_list va;
-    char ch;
-    char *p;
+    char    ch;
+    char *  p;
 
     va_start(va, fmt);
 
@@ -103,12 +103,9 @@ void tfp_printf(char *fmt, ...) {
             }
             *bf = 0;
             bf  = p;
-            while (*bf++ && w > 0)
-                w--;
-            while (w-- > 0)
-                putchar(lz ? '0' : ' ');
-            while ((ch = *p++))
-                putchar(ch);
+            while (*bf++ && w > 0) w--;
+            while (w-- > 0) putchar(lz ? '0' : ' ');
+            while ((ch = *p++)) putchar(ch);
         }
     }
 abort:;

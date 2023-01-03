@@ -3,23 +3,23 @@
         ".clang-format": "yaml",
         ".config": "shellscript",
         ".gitignore": "ignore",
+        "*.build": "meson",
         "*.config": "makefile",
-        "*.cwaps1": "powershell",
         "*.dts": "dts",
         "*.dtsi": "dts",
         "*.html": "html",
+        "*.ini.in": "ini",
+        "*.log": "log",
         "*.scc": "makefile",
         "*.txt": "plaintext",
-        "ssh_config": "ssh_config",
-        "*.log": "log",
-        "cross_*": "ini",
-        "*.build": "meson",
         "CMakeLists.txt": "cmake",
-        "stdint.h": "c"
+        "cross_*": "ini",
+        "ssh_config": "ssh_config"
     },
     "editor.tabSize": 4,
     "bashIde.shellcheckArguments": "--disable=SC2034",
     "[c]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file"
     }
 }

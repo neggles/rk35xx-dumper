@@ -21,8 +21,7 @@ typedef struct rk_uart {
     volatile uint32_t msr;
 } rk_uart_t;
 
-void setupUart(void);
-int puts(const char *s);
+int  puts(const char *s);
 void putchar(char c);
 
 #endif

@@ -5,7 +5,7 @@
 #define BOOTROM_BASE 0xFFFF0000
 
 unsigned char *bootrom      = (unsigned char *)BOOTROM_BASE;
-const uint32_t bootrom_size = 0x5000;
+const uint32_t bootrom_size = 0x10000;
 
 void hexDump(size_t offset, void *addr, int len);
 
@@ -19,8 +19,8 @@ void _start(void) {
 
 
 void hexDump(size_t offset, void *addr, int len) {
-    int i;
-    unsigned char bufferLine[17];
+    int            i;
+    unsigned char  bufferLine[17];
     unsigned char *pc = (unsigned char *)addr;
 
     for (i = 0; i < len; i++) {
