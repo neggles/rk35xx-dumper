@@ -175,3 +175,4 @@ _deps
 
 # toolchain and rkbin
 /toolchain/
+/logs/
